@@ -1,0 +1,109 @@
+body {
+  background: url('../img/背景.jpg') no-repeat fixed center center;
+  background-size: cover;
+}
+
+
+.login-block{
+  width: 350px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  border-top: 5px solid #333;
+  margin: 0 auto;
+  margin-top:200px;
+}
+.singup-block{
+  width:750px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  border-top: 5px solid #333;
+  margin: 0 auto 20px auto;
+}
+.login-block h1 , .singup-block h1 {
+  text-align: center;
+  color: #000;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.login-block input ,.singup-block input{
+  width: 100%;
+  height: 42px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-family: Montserrat;
+  padding: 0 20px 0 50px;
+  outline: none;
+}
+
+.login-block input:active, .login-block input:focus ,.singup-block input:active, .singup-block input:focus {
+  border: 1px solid #333;
+}
+
+.login-block button ,.singup-block button {
+  width: 100%;
+  height: 40px;
+  background: #333;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #333;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: Montserrat;
+  outline: none;
+  cursor: pointer;
+}
+
+.login-block button:hover ,.singup-block button:hover{
+  background: #ccc;
+}
+
+span.inputicon{
+  float:left;
+  margin-top:-48px;
+  margin-left: 20px;
+}
+span.fas p.must{
+  margin-top:-21px;
+  margin-left:17px;
+}
+.signup-check-label{
+  font-size:12px;
+  display: block;
+  float: left;
+  clear: left;
+  line-height: 38px;
+  margin-top:-10px;  
+}
+p.login-notice{
+  font-size: 11px;
+  color:red;
+  padding-top:17px;
+  margin-left:-20px;
+}
+input.signup-checkbox{
+  width:10px;
+  display: block;
+  float: left;
+  clear: right;
+  line-height: 20px;
+  margin:0;
+  margin-right:5px;
+}
+
+#textarea1{
+  font-size: 12px;
+  line-height: 14px;
+  width:330px;
+  height:160px;
+  margin:6px auto;  
+}
