@@ -18,7 +18,21 @@
   .cd-primary-nav a{
     text-decoration: none;
   }
-  
+ 
+  .cd-primary-nav .login-dropdown{  
+    height:35px;   /*登入高度*/
+    font-size: 22px;
+    margin-top:auto;
+    margin-bottom: auto;
+  }
+  .cd-primary-nav .login-dropdown .dropdown-menu{  
+    padding:5px;
+  }
+
+  .cd-primary-nav .btn{
+    height:35px;  /*註冊高度*/
+  }
+
   .cd-primary-nav .my-btn{
     width:50px;
     height:50px;

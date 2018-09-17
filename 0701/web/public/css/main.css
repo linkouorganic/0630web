@@ -7,11 +7,13 @@ body{
 .container{
     margin-top:90px;
 }
-.modal-backdrop {
-    /* bug fix - no overlay */    
+.modal-backdrop {  
     display: none;    
 }
-
+.login-dropdown{
+    margin-right:8px;
+    margin-left:0;
+  }
 
 /*輪播*/
 .carousel-inner{
@@ -113,7 +115,6 @@ p.about-p{
     line-height: 26px;
 }
 
-
 /*微電影*/
 .videowrapper{
     position: relative;
@@ -132,7 +133,6 @@ p.about-p{
     max-height: 473px;
 }
 
-
 /*聯絡我們*/
 .container p.contact_title{
     font-size:30px;
@@ -149,8 +149,6 @@ p.about-p{
     line-height: 28px;
     margin:5px;
 }
-
-/*會員專區*/
 
 /*qrcode*/
 .qr-desktop{
@@ -212,7 +210,6 @@ p.about-p{
     margin:10px 0 0 0;
     width:60%;
 }
-
 
 /*標題*/
 h3.tittle-w3l {

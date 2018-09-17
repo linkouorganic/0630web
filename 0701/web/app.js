@@ -24,7 +24,10 @@ var about_chouhao = require('./routes/about_chouhao');
 var about_chiyuchi = require('./routes/about_chiyuchi');
 var about_yabao = require('./routes/about_yabao');
 var mv = require('./routes/mv');
+//供應商
 var profilesupplier = require('./routes/profilesupplier');
+var supplier = require('./routes/supplier');
+var supplieruser = require('./routes/supplieruser');
 //產品
 var productListByPage = require('./routes/productListByPage');
 var productSearchByName = require('./routes/productSearchByName');
@@ -90,7 +93,10 @@ app.use('/about_chouhao', about_chouhao);
 app.use('/about_chiyuchi', about_chiyuchi);
 app.use('/about_yabao', about_yabao);
 app.use('/mv', mv);
+//供應商
 app.use('/profilesupplier', profilesupplier);
+app.use('/supplier', supplier);
+app.use('/supplieruser', supplieruser);
 //產品
 app.use('/productListByPage', productListByPage);
 app.use('/productSearchByName', productSearchByName);

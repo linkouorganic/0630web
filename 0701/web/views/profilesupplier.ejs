@@ -1,5 +1,5 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -60,7 +60,7 @@
 					<a href="/contact">聯絡我們</a>
 				</li>
 
-				<li>
+				<li style="display:inline-flex">
 					<% if(login)
 					{%>
 						<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profile'">會員專區</button>
@@ -68,11 +68,24 @@
 						<% }	
 				else
 					{%>
-							<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/login'">登入</button>
-							<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/signup'">註冊</button>
+							<!--<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/login'">登入</button>-->
+							<!---->
+							<div class="dropdown login-dropdown" style="display:inline-flex">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">登入
+									<span class="caret"></span>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+									<a class="dropdown-item" href="/login">一般會員</a>
+									<a class="dropdown-item" href="/loginsupplier">供應商</a>
+								</div>
+							</div>
+							<!---->
+							<button type="button" class="btn btn-outline-secondary m-3" onclick="self.location.href='/signup'">註冊</button>
 							<% }	
 				%>
-								<button type="button" class="btn btn-warning m-1 btn-lg my-btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-shopping-cart fa-2x"></i></button>
+								<button type="button" class="btn btn-warning m-1 btn-lg my-btn" data-toggle="modal" data-target="#myModal">
+									<i class="fas fa-shopping-cart fa-2x"></i>
+								</button>
 				</li>
 			</ul>
 		</nav>
