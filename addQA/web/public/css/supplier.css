@@ -1,0 +1,235 @@
+h3.sup-title{
+    font-size: 20px;
+    font-weight: 700;
+    margin:10px 0;    
+}
+h3.form-title{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-left:-20px;
+}
+/*分類*/
+.sup-cata-title{
+    text-align:center;
+    font-size:24px;
+    margin:5px 0;
+    font-weight: 700;
+    color:#222;
+}
+.supplier-catalog a.nav-link{
+    margin:5px;
+    text-decoration: none;
+    color:black;
+    font-size: 20px;
+}
+.supplier-catalog i.fas{
+    margin-right: 6px;
+}
+
+/*內容*/
+.tab-pane{
+    padding:18px 40px 18px 20px;
+}
+
+/*訂單清單-----------------------*/
+/*管理者_新增訂單*/
+button.newOrder-btn{
+    margin-bottom: 10px;
+    height: 36px;
+    font-size: 20px;
+    line-height: 20px;
+}
+.sup-newOrder-modal{    
+    margin-left:30px;
+}
+/*詳細資料區塊*/
+.member-panel{
+    background-color: #eee;
+}
+p.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-bottom:0;
+}
+p.accordion.active, p.accordion:hover {
+    background-color: #ddd;
+}
+p.accordion:after {
+    content: '\2795'; /* plus sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+p.accordion.active:after {
+    content: "\2796"; /* minus sign (-) */
+}
+div.panel {
+    padding:0;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    opacity: 0;
+    margin-bottom:10px;
+    border:1px solid #ddd;
+}
+div.panel.show {
+    padding:10px;
+    transition:0s;
+    opacity: 1;
+    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+/*訂單詳細資料----*/
+.supplier-OrderList, .admin-OrderList{
+    padding-left:30px;
+}
+p.pFromDB , .supplier-OrderList form label, .admin-OrderList form label{
+    margin:3px 0 8px 6px;
+    font-size: 16px;
+    line-height: 15px;
+}
+/*訂單清單end--------------------*/
+
+
+/*分配訂單-----------------------*/
+/*待分配訂單_新增欄位*/
+#inputPrice{
+    width:55px;
+}
+#inputSpecific{
+    width:60px;
+}
+#inputProName{
+    width:110px;
+}
+#inputCusName{
+    width:150px;
+}
+#inputNum{
+    width:55px;
+}
+#inputFinishDate{
+    border:1px solid #ccc;
+}
+#selectDistri{
+    width:150px;
+    margin-left:5px;
+    padding:1px;
+    line-height: 14px;
+}
+.sup-distriOrder-form input.form-control, .sup-distriOrder .sup-distriOrder-form input{
+    height:27px;
+    margin-left:13px;
+}
+.sup-distriOrder-form label{
+    height:27px;
+    margin-left:13px;
+}
+.sup-distri-form{
+    margin-left:10px;
+    margin-bottom:5px;
+}
+
+/*待分配訂單+新增訂單_新增按钮*/
+#addDistri , #addPro {
+    margin:2px 0 0 2px;
+    padding:8px;
+    display:inline-block;
+    background-color:#aaa;
+    color:#f1f1f1;
+    border-radius: 4px;
+    font-size:14px;
+    line-height: 14px;
+}
+/*待分配訂單+新增訂單_删除按钮*/
+.removeDistri , .removePro{
+    margin:2px 0 0 4px;
+    padding:8px;
+    display:inline-block;
+    background-color:#B02109;
+    color:#f1f1f1;
+    border-radius: 4px;
+    font-size:14px;
+    border:none;
+}
+#addDistri:hover, .removeDistri:hover{
+    cursor: pointer;
+}
+.alignRight{
+    text-align: right;
+}
+sup-distriOrder-form input{
+    padding:1px;
+    font-size: 14px;
+    margin-right:0;
+}
+/*已分配訂單表格*/
+  ul{
+    width: 100%;
+    display: block;
+    margin: 1em auto;
+    border-collapse: collapse;
+  }
+  .thead{display: table-header-group;}
+  .tr{display: table-row;}
+  .tbody{display: table-row-group;}
+  .thead li, .tr li{
+    display: table-cell;
+    padding: 8px;
+    border: 1px solid #aaa;
+  }
+  .thead li{
+    text-align: center;
+    font-weight: bold;
+    background: #ccc;
+  }
+  
+  @media only screen and (max-width:768px){
+    .thead{
+      display: none;
+    }
+    .tr{
+      display: block;
+      border: #ddd 1px solid;
+      margin-bottom: 5px;
+    }
+    .tr li{
+      display: inline-block;
+      width: 100%;
+      border: none;
+    }
+    .tr li:before{
+      content: attr(data-title);
+      display: inline-block;
+      width: auto;
+      min-width: 20%;
+      font-weight: 900;
+      padding-right: 1rem;
+    }
+  }
+/*分配訂單end--------------------*/
+
+
+/*出貨/收款-----------------------*/
+.shipping-list{
+    padding:0;
+    padding-left:6px;    
+    margin:7px;    
+    border-left:4px solid #ccc;
+    border:90%;
+}
+.shipping-list .sup-confirm-btn{
+    margin:5px;
+}
+/*出貨/收款end--------------------*/
+
