@@ -1,0 +1,354 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url('https://use.fontawesome.com/releases/v5.0.9/css/all.css');
+/**/
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+}
+.container{
+    margin-top:90px;
+}
+.modal-backdrop {  
+    display: none;    
+}
+.login-dropdown{
+    margin-right:8px;
+    margin-left:0;
+  }
+
+/*輪播*/
+.carousel-inner{
+    margin:8px auto 0 auto;
+    width:85%;
+    height:85%;
+}
+
+/*關於我們*/
+.about-img{
+    display:flex;
+    align-items:center;
+    justify-content:center;    
+}
+.about-img img{
+    width:100%;
+    padding:0;
+    margin:0;
+}
+.about-content h3{
+    padding-top:15px;
+    padding-bottom:15px;
+    color:green;
+    font-size:20px;
+}
+.about-content{
+    line-height: 25px;
+}
+p.about-p{
+    font-size:14px;
+}
+/*關於我們_表格*/
+.about{
+    margin-top:50px;
+    display:block;
+    float:right;
+}
+.ab-title, .ab-member{
+    float:left;    
+    margin-right:8px;
+    width:110px;
+    height:110px;
+}
+.ab-title{
+    font-size: 18px;
+    line-height:110px;
+    max-width:100%;
+    display:block;
+    text-align:center;
+    border-right:2px solid #604C3F;    
+    padding-right: 3px;
+}
+.ab-member img{
+    width:70%;
+    margin:auto;
+    margin-bottom: 8px;
+    opacity: 0.3;
+    border-radius: 40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.ab-member p{
+    font-size: 12px;
+    text-align: center;
+    color:black;
+    padding-right:8px;
+    border-right: 2px solid #604C3F;
+}
+.ab-member a{
+    text-decoration: none;
+}
+/*關於四家*/
+.four-img img{
+    width:300px;
+    border-radius: 150px;    
+    margin-bottom: 10px;
+}
+.four-img{
+    display:flex;
+    align-items:center;
+    justify-content:center; 
+    padding:0;
+    margin:0;
+}
+.four-content h3{
+    color:#604C3F;
+    padding-top:3px;	
+    font-size:24px;
+    font-weight: 600;
+}
+.four-content h4{
+    color:#28a745;	
+    font-size:18px;
+    margin-top: 15px;
+    margin-bottom: 7px;
+}
+.four-content p{
+    line-height: 26px;
+}
+
+/*微電影*/
+.videowrapper{
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-top:60px;
+}
+.videowrapper iframe{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%; 
+    height: 100%; 
+    max-width: 840px; 
+    max-height: 473px;
+}
+
+/*聯絡我們*/
+.container p.contact_title{
+    font-size:30px;
+}
+.con-info{
+    border-left:1px solid #ddd;
+}
+.con-info img{
+    width:90%;
+    margin-top:10px;
+}
+.con-info p{
+    font-size: 16px;
+    line-height: 28px;
+    margin:5px;
+}
+
+/*qrcode*/
+.qr-desktop{
+    display:flex;
+    margin:200px auto 0 auto;
+    padding-top:40px;
+    padding-bottom:40px;
+    background-color:rgba(223, 221, 221, 0.7);
+    border: #604C3F 3px solid;
+    min-width: 320px;
+    max-width:600px;
+    height:190px;
+}
+.qr-desktop .qr-img{  
+    margin:auto 0;
+    padding-left:0;
+    display:flex;
+    align-items: flex-end;
+    justify-content:center; 
+}
+.qr-desktop .qr-form{
+    margin-right:0; 
+    padding-right:0;
+}
+.qr-desktop .qr-form form p{
+    font-size:20px;
+    padding:0;
+    margin:14px 0;
+}
+.qr-img img{
+    width:75px;
+}
+.qr-desktop form input.form-control{
+    width:80%;
+    height:34px;
+}
+.qr-touch{
+    margin:85px 15px 15px 15px;
+    padding:20px;
+    background-color:rgba(223, 221, 221, 0.7);
+    border: #604C3F 3px solid;
+    min-width: 300px;
+}
+.qr-touch form input.form-control{
+    width:100%;
+    height:30px;
+}
+.qr-touch form button{
+    margin-top:10px;
+    height:30px;
+}
+.qr-touch .qr-form p{
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.qr-img-touch img{
+    margin:10px 0 0 0;
+    width:60%;
+}
+
+/*標題*/
+h3.tittle-w3l {
+    color: #000;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top:-50px; /*新增*/
+    position: relative;
+    padding-bottom: 20px;
+}
+h3.tittle-w3l:after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.33);
+    position: absolute;
+    bottom: 0px;
+    right: 41.5%;
+    width: 200px;
+    height: 1px;
+    background-position: 0px 0px;
+}
+span.heading-style {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -4px;
+    z-index: 1;
+    line-height: 0px;
+}
+.heading-style i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #FF5722;
+    margin: 0 -4px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.heading-style i:nth-child(2) {
+    width: 12px;
+    height: 12px;
+    background-color: #1fbb41;
+}
+@media(max-width: 1080px){
+    h3.tittle-w3l {
+        font-size: 2.8em;
+    }
+    h3.tittle-w3l:after {
+        right: 40%;
+    }
+}
+@media(max-width: 1024px){
+    h3.tittle-w3l {
+        font-size: 2.5em;
+    }
+}
+@media(max-width: 991px){
+    h3.tittle-w3l:after {
+        right: 37%;
+    }
+}
+@media(max-width: 667px){
+    h3.tittle-w3l {
+        font-size: 2.3em;
+    }
+    h3.tittle-w3l:after {
+        width: 169px;
+    }
+    h3.tittle-w3l:after {
+        right: 36.5%;
+    }
+    .heading-style i {
+        width: 9px;
+        height: 9px;
+    }
+    .heading-style i:nth-child(2) {
+        width: 11px;
+        height: 11px;
+    }
+}
+@media(max-width: 600px){
+    h3.tittle-w3l:after {
+        right: 35%;
+    }
+}
+@media(max-width: 480px){
+    h3.tittle-w3l {
+        font-size: 2em;
+    }
+    h3.tittle-w3l:after {
+        right: 31%;
+    }
+    h3.tittle-w3l {
+        margin-bottom: 30px;
+        padding-bottom: 16px;
+    }
+    h3.tittle-w3l:after {
+        right: 35%;
+        width: 120px;
+    }
+    .heading-style i {
+        margin: 0 -3px;
+    }
+}
+@media(max-width: 384px){
+    h3.tittle-w3l:after {
+        right: 35%;
+        width: 100px;
+    }
+    .heading-style i {
+        width: 8px;
+        height: 8px;
+    }
+    .heading-style i:nth-child(2) {
+        width: 10px;
+        height: 10px;
+    }
+}
+@media(max-width: 320px){
+    h3.tittle-w3l {
+        margin-bottom: 24px;
+        padding-bottom: 13px;
+        font-size: 1.55em;
+    }
+    h3.tittle-w3l:after {
+        right: 33%;
+        width: 100px;
+        bottom: -1px;
+    }
+    .heading-style i {
+        width: 7px;
+        height: 7px;
+    }
+    .heading-style i:nth-child(2) {
+        width: 9px;
+        height: 9px;
+    }
+    .heading-style i {
+        margin: 0 -2px;
+    }
+}
