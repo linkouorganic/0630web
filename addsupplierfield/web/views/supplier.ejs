@@ -172,49 +172,49 @@
                         <div class="form-group row">
                           <label for="OrdDate" class="col-form-label">訂貨日期</label>
                           <div class="col-md-3">
-                            <input type="date" name="OrdDate" class="form-control" id="OrdDate">
+                            <input type="date" name="OrdDate" class="form-control" id="OrdDate" required/>
                           </div>
                           <label for="FinishDate" class="col-form-label">出貨日期</label>
                           <div class="col-md-3">
-                            <input type="date" name="FinishDate" class="form-control" id="FinishDate">
+                            <input type="date" name="FinishDate" class="form-control" id="FinishDate" required/>
                           </div>
                         </div>
 
                         <!---->
                         <div class="form-group row sup-distriOrder-form ">
-                          <label for="selectProName" style="margin-left:0" >商品名稱</label>								  
-							<select class="selectProName" style="margin-left:15px" id="ProId"  name="ProId">
-								<% for(var i=0; i<productData.length; i++){ %>                     
-									<option value="<%= productData[i].ProId %>"><%= (productData[i].ProName) %></option>                                
+                          <label for="selectProName" style="display:none" >商品名稱</label>								  
+							<select class="selectProName" style="display:none" id="ProId" >
+								<% for(var q=0; q<productData.length; q++){ %>                     
+									<option value="<%= productData[q].ProId %>"><%= (productData[q].ProName) %></option>                                
 								<% } %>                                                         
 							</select>
-                          <label for="inputNum">規格</label>
+                          <!--<label for="inputNum">規格</label>
                           <input type="text" class="form-control" name="inputSpecific" id="inputSpecific">
                           <label for="inputNum">數量</label>
                           <input type="text" class="form-control" name="inputNum" id="inputNum">
                           <label for="inputPrice">價格</label>
-                          <input type="text" class="form-control" name="inputPrice" id="inputPrice">
-                          
+                          <input type="text" class="form-control" name="inputPrice" id="inputPrice">-->
 						  <!--<p>
                             <span id="addPro">新增</span>
                           </p>-->
 	
 
 	
-						<!--新增欄位測試--->
+						<!--新增欄位--->
 						<form> 
 						<table border="0" width="540" id="table1"> 
-							<tr> 
-								<td width="42" bgcolor="#7F9DB9">編號</font></td> 
+							<tr> 							
 								<td width="86" bgcolor="#7F9DB9">商品名稱</font></td> 
 								<td width="125" bgcolor="#7F9DB9">規格</font></td> 
 								<td width="125" bgcolor="#7F9DB9">數量</font></td> 
 								<td width="125" bgcolor="#7F9DB9">價格</font></td> 
+								
 							</tr> 
 						</table> 
-							<a id="add" href="javascript:" onclick="addField()">新增欄位</a> 
 						
-						<p><input type="submit"> <input type="reset"></p>  
+							<a id="add" href="javascript:" onclick="addField()">新增</a> 
+						
+						<p><input type="reset"></p>  
 						</form>  
 		 
 						 
@@ -225,29 +225,30 @@
 						function addField() {  
 							var table = document.getElementById("table1"); 
 							var tr = table.insertRow(-1); 
-						 
-							var td = tr.insertCell(-1); 
-							td.innerHTML = "<span class=red>" + tr.rowIndex + "</span>"; 
-						 
+
 							var select = document.createElement("select");  
-							select.setAttribute("name","cname");  
-							select.options.add(new Option("","")) 
+							select.setAttribute("ProId" ,"ProName" ); 
+							select.options.add(new Option("請選擇","")) 							
+							
 							for (var i=0;i<document.getElementById("ProId").length;i++)  
-							{ 
-								select.options.add(new Option(document.getElementById("ProId").options[i].innerHTML),document.getElementById("ProId").options[i].value); 
-							} 
+							select.options.add(new Option(document.getElementById("ProId").options[i].innerHTML,document.getElementById("ProId").options[i].value)); 
+							 
+							var td = tr.insertCell(-1);   	
+							td.appendChild(select).name="ProId";
+												 
 							var td = tr.insertCell(-1);   
-							td.appendChild(select);  
+							td.innerHTML = "<input type='text' class='form-control' name='inputSpecific' id='inputSpecific' "+tr.rowIndex+"' value='' required/>"; 					 						
 						 
 							var td = tr.insertCell(-1);   
-							td.innerHTML = "<input type='text' class='form-control' name='inputSpecific' id='inputSpecific' "+tr.rowIndex+"' value=''>"; 					 						
-						 
-							var td = tr.insertCell(-1);   
-							td.innerHTML = "<input type='text' class='form-control' name='inputNum' id='inputNum' "+tr.rowIndex+"' value=''>"; 	
+							td.innerHTML = "<input type='text' class='form-control' name='inputNum' id='inputNum' "+tr.rowIndex+"' value='' required/>"; 	
 
 							var td = tr.insertCell(-1);   
-							td.innerHTML = "<input type='text' class='form-control' name='inputPrice' id='inputPrice' "+tr.rowIndex+"' value=''>"; 							
+							td.innerHTML = "<input type='text' class='form-control' name='inputPrice' id='inputPrice' "+tr.rowIndex+"' value='' required/>"; 							
 						 
+							var td = tr.insertCell(-1); 
+							//td.innerHTML = "<span name='SerNo' id= 'SerNo'>" + tr.rowIndex + "</span>"; 
+							td.innerHTML =  "<input type='hidden'  class='form-control' name='SerNo' id='SerNo' value='"+tr.rowIndex+"'>"; 
+							
 							var td = tr.insertCell(-1);   
 							td.innerHTML = "<input type='button' value='刪除' onclick='javascript:delField(this);'>";  
 							document.getElementById("add").style.display = table.rows.length == countMax+1 ? "none" : ""; 
@@ -267,10 +268,7 @@
 						}  
 						</script> 
 						<!--新增欄位---> 
-					
-					
-					
-						 
+ 
                         </div>
 						
 						
@@ -278,26 +276,45 @@
 
 
                         <!---->
-
                         <h3 class="form-title">顧客資料</h3>
                         <div class="form-group row">
                           <label for="inputCusName" class="col-form-label">廠商名稱</label>
                           <div class="col-md-5">
-                            <input type="text" class="form-control" id="inputCusName">
+                            <input type="text" class="form-control" id="CusName" name="CusName" required/>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="inputTel" class="col-form-label">電話</label>
                           <div class="col-md-4">
-                            <input type="tel" class="form-control" id="inputTel">
+                            <input type="tel" class="form-control" id="Cellphone" name="Cellphone" required/>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="inputAddress" class="col-form-label">地址</label>
                           <div class="col-sm-6">
-                            <input type="text" class="form-control" id="inputAddress">
+                            <input type="text" class="form-control" id="Address" name="Address" required/>
                           </div>
                         </div>
+						
+						<div class="form-group row" style="display:none">
+                          <label for="inputEmail" class="col-form-label">信箱</label>
+                          <div class="col-sm-6">
+                            <input type="text" class="form-control" id="Email" name="Email" value="test123123@gmail.com">
+                          </div>
+                        </div>
+						<div class="form-group row" style="display:none">
+                          <label for="inputAccount" class="col-form-label">帳號</label>
+                          <div class="col-sm-6">
+                            <input type="text" class="form-control" id="Account" name="Account">
+                          </div>
+                        </div>
+						<div class="form-group row" style="display:none">
+                          <label for="inputPassword" class="col-form-label">密碼</label>
+                          <div class="col-sm-6">
+                            <input type="password" class="form-control" id="Password" name="Password" value="test123123">
+                          </div>
+                        </div>
+						
                       </form>
                     </div>
                     <div class="modal-footer">
