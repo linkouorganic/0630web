@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>林口有機聯盟</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115160215-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-115160215-1');
+  </script>
+  <!--新增檔案-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link id="themecss" rel="stylesheet" type="text/css" href="//www.shieldui.com/shared/components/latest/css/light/all.min.css"
+  />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/supplier.css">
+</head>
+
+<body>
+  <!--導覽列-->
+  <header class="cd-auto-hide-header">
+    <div class="logo">
+      <a href="/">
+        <img src="img/透明logo1.gif" alt="Logo">
+      </a>
+    </div>
+
+    <nav class="cd-primary-nav">
+      <a href="#cd-navigation" class="nav-trigger">
+        <span>
+          <em aria-hidden="true"></em>
+          Menu
+        </span>
+      </a>
+      <!-- .nav-trigger -->
+
+      <ul id="cd-navigation">
+        <li>
+          <a href="/about">關於我們</a>
+        </li>
+        <li>
+          <a href="/mv">聯盟故事微電影</a>
+        </li>
+        <li>
+          <a href="/productListByPage?pageNo=1">我們的商品</a>
+        </li>
+        <li>
+          <a href="/distributors">去哪兒買</a>
+        </li>
+        <li>
+          <a href="/certification">認證資訊</a>
+        </li>
+        <li>
+          <a href="/contact">聯絡我們</a>
+        </li>
+        <li style="display:inline-flex">
+			<% if(login)
+			{
+				if(user.supplierid){%>
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profilesupplier'">會員專區</button>
+				<%}else {%>
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profile'">會員專區</button>
+				<% } %> 
+				
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/logout'">登出</button>
+				<% }	
+			else
+				{%>
+						<!--<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/login'">登入</button>-->
+						<!---->
+						<div class="dropdown login-dropdown" style="display:inline-flex">
+							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">登入
+								<span class="caret"></span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="/login">一般會員</a>
+								<a class="dropdown-item" href="/loginsupplier">供應商</a>
+							</div>
+						</div>
+						<!---->
+						<div class="dropdown login-dropdown" style="display:inline-flex">
+							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">註冊
+								<span class="caret"></span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="/signup">一般會員</a>
+								<a class="dropdown-item" href="/signupsupplier">供應商</a>
+							</div>
+						</div>
+						<% }	
+			%>
+						<button type="button" class="btn btn-warning m-1 btn-lg my-btn" data-toggle="modal" data-target="#myModal">
+							<i class="fas fa-shopping-cart fa-2x"></i>
+						</button>
+		</li>
+      </ul>
+    </nav>
+    <!-- .cd-primary-nav -->
+
+  </header>
+  <!-- .cd-auto-hide-header -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">維修</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          網站試營運，部分功能建構中。
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--供應商介面-->
+  <div class="container">
+    <div class="row" style="justify-content:center;">
+      <!--供應商專區分類-->
+      <div class="col-sm-12 col-md-3">
+        <div class="card supplier-catalog">
+          <div class="card-header sup-cata-title">小農專區</div>
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="newOrder-tab" data-toggle="pill" href="#newOrder" role="tab" aria-controls="newOrder" aria-selected="true">
+              <i class="fas fa-list-alt"></i>訂單清單</a>
+            <a class="nav-link" id="distriOrder-tab" data-toggle="pill" href="#distriOrder" role="tab" aria-controls="distriOrder" aria-selected="false">
+              <i class="fas fa-users"></i>被分配訂單</a>
+          </div>
+        </div>
+      </div>
+
+      <!--內容-->
+      <div class="col-sm-12 col-md-8">
+        <div class="card">
+          <div class="tab-content" id="myTabContent">
+            <!--訂單清單-->
+            <div class="tab-pane fade show active" id="newOrder" role="tabpanel" aria-labelledby="newOrder-tab">
+
+              <!--訂單列表-->
+			  <form>
+              <h3 class="sup-title">訂單列表</h3>
+              <div class="member-panel">
+			  <% for(var order=0; order<orderData.length; order++){ %>        
+			  <p class="accordion">訂單<%= orderData[order].OrdNo %></p>
+                <div class="panel">
+                  <!--管理者訂單詳細資料-->
+                  <div class="admin-OrderList">
+                    <form>
+                      <h3 class="form-title">商品資訊</h3>
+
+                      <div class="form-group row">
+                        <label>訂單編號:</label>
+                        <div class="col-md-2">
+                          <p class="pFromDB"><%= orderData[order].OrdNo %></p>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label>訂貨日期:</label>
+                        <div class="col-md-3">
+                          <p class="pFromDB"><%= myDateFormat(orderData[order].OrdDate) %></p>
+                        </div>
+                        <label>出貨日期:</label>
+                        <div class="col-md-3">
+                          <p class="pFromDB"><%= myDateFormat(orderData[order].FinishDate) %></p>
+                        </div>
+                      </div>
+
+						
+                      <div class="form-group row">
+					  <% for(var orderdetail=0; orderdetail<orderdetailData.length; orderdetail++){ %>        
+
+							<% if(orderData[order].OrdNo==orderdetailData[orderdetail].Order_OrdNo){ %>                 
+								
+							<label>商品名稱:</label>
+							<div class="col-md-3">
+								<% for(var name=0; name<productData.length; name++){ %> 
+									<% if(productData[name].ProId==orderdetailData[orderdetail].Product_ProId){ %>    
+										<p class="pFromDB"><%= (productData[name].ProName) %></p> 
+									<% } %> 
+								<% } %> 
+							</div>
+							<label>重量:</label>
+							<div class="col-md-2">
+							  <p class="pFromDB"><%= orderdetailData[orderdetail].ProQuantity %>g</p>
+							</div>
+							<label>價格:</label>
+							<div class="col-md-2">
+							  <p class="pFromDB">$<%= orderdetailData[orderdetail].Amount %></p>
+							</div>	
+							
+							<% } %>   
+							
+					  <% } %> 
+                      </div>
+					  
+					  
+                      <h3 class="form-title">顧客資訊</h3>
+						
+					  <% for(var custom=0; custom<customData.length; custom++){ %>    
+					  
+						<% if(orderData[order].Custom_CusNo==customData[custom].id){ %>   
+								 
+						  <div class="form-group row">
+							<label>廠商名稱:</label>
+							<div class="col-md-2">
+							  <p class="pFromDB"><%= customData[custom].CusName %>    </p>
+							</div>
+						  </div>
+
+						  <div class="form-group row">
+							<label>電話:</label>
+							<div class="col-md-3">
+							  <p class="pFromDB"><%= customData[custom].Cellphone %>    </p>
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label>地址:</label>
+							<div class="col-md-6">
+							  <p class="pFromDB"><%= customData[custom].Address %>    </p>
+							</div>
+						  </div>
+					  
+						<% } %> 
+					  
+					  <% } %> 
+					  
+                    </form>
+                  </div>
+                </div>
+					                           
+				<% } %> 
+                
+            </div>
+			</form>
+			
+            </div>
+
+            <!--分配訂單-->
+            <div class="tab-pane fade" id="distriOrder" role="tabpanel" aria-labelledby="distriOrder-tab">
+              <h3 class="sup-title">待確認訂單</h3>
+              <div class="member-panel">
+                <p class="accordion">訂單1</p>
+                <div class="panel">
+                  <div class="sup-finDistriOrder">
+                    <ul>
+                      <li class="thead">
+                        <ol class="tr">
+                          <li style="width:100px">產品名稱</li>
+                          <li>重量</li>
+                          <li>供應商</li>
+                          <li>備註</li>
+                        </ol>
+                      </li>
+                      <li class="tbody">
+                        <ol class="tr">
+                          <li data-title="產品名稱">高麗菜</li>
+                          <li data-title="重量">20 g</li>
+                          <li data-title="供應商">語林</li>
+                          <li data-title="備註">
+                            <!--<button type="button" class="btn btn-secondary" data-toggle="modal" data-target=".bd-example-modal-sm">編輯</button>
+                            編輯分配訂單modal
+                            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">編輯訂單</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body sup-newOrder-modal">
+                                    <form>
+                                      <div class="form-group row">
+                                        <label for="inputOrdDate">訂貨日期 </label>
+                                        <div class="col-md-6">
+                                            <p class="pFromDB">2018/01/01</p>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="inputProName" class="col-form-label">商品名稱</label>
+                                        <div class="col-md-4">
+                                            <p class="pFromDB">高麗菜</p>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="inputNum" class="col-form-label">重量</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="inputNum">
+                                          </div>                                        
+                                      </div>
+                                    </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">確認</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>-->
+
+                            <button type="button" class="btn btn-primary">認購</button>
+                            <button type="button" class="btn btn-success">出貨</button>
+                          </li>
+                        </ol>
+                        <ol class="tr">
+                          <li data-title="產品名稱">高麗菜</li>
+                          <li data-title="重量">10 g</li>
+                          <li data-title="供應商">芽寶寶</li>
+                          <li data-title="備註"></li>
+                        </ol>
+                        <ol class="tr">
+                          <li data-title="產品名稱">高麗菜</li>
+                          <li data-title="重量">50 g</li>
+                          <li data-title="供應商">畦遊季</li>
+                          <li data-title="備註"></li>
+                        </ol>
+                        <ol class="tr">
+                          <li data-title="產品名稱">小白菜</li>
+                          <li data-title="重量">50 g</li>
+                          <li data-title="供應商">語林</li>
+                          <li data-title="備註">                                
+                              <button type="button" class="btn btn-primary">認購</button>
+                              <button type="button" class="btn btn-success">出貨</button>
+                          </li>
+                        </ol>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+  <!--shieldUI-->
+  <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+  <!--新增input按鈕-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+  <script src="js/main.js"></script>
+  <script src="js/mybootstrap.js"></script>
+
+</body>
+
+</html>

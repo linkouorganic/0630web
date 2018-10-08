@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>林口有機聯盟</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115160215-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-115160215-1');
+  </script>
+  <!--新增檔案-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <!--導覽列-->
+  <header class="cd-auto-hide-header">
+    <div class="logo">
+      <a href="/">
+        <img src="img/透明logo1.gif" alt="Logo">
+      </a>
+    </div>
+
+    <nav class="cd-primary-nav">
+      <a href="#cd-navigation" class="nav-trigger">
+        <span>
+          <em aria-hidden="true"></em>
+          Menu
+        </span>
+      </a>
+      <!-- .nav-trigger -->
+
+      <ul id="cd-navigation">
+        <li>
+          <a href="/about">關於我們</a>
+        </li>
+        <li>
+            <a href="/mv">聯盟故事微電影</a>
+          </li>
+        <li>
+			<a href="/productListByPage?pageNo=1">我們的商品</a>
+        </li>
+        <li>
+          <a href="/distributors">去哪兒買</a>
+        </li>
+        <li>
+          <a href="/certification">認證資訊</a>
+        </li>
+        <li>
+          <a href="/contact">聯絡我們</a>
+        </li>
+        <li style="display:inline-flex">
+			<% if(login)
+			{
+				if(user.supplierid){%>
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profilesupplier'">會員專區</button>
+				<%}else {%>
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profile'">會員專區</button>
+				<% } %> 
+				
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/logout'">登出</button>
+				<% }	
+			else
+				{%>
+						<!--<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/login'">登入</button>-->
+						<!---->
+						<div class="dropdown login-dropdown" style="display:inline-flex">
+							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">登入
+								<span class="caret"></span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="/login">一般會員</a>
+								<a class="dropdown-item" href="/loginsupplier">供應商</a>
+							</div>
+						</div>
+						<!---->
+						<div class="dropdown login-dropdown" style="display:inline-flex">
+							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">註冊
+								<span class="caret"></span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="/signup">一般會員</a>
+								<a class="dropdown-item" href="/signupsupplier">供應商</a>
+							</div>
+						</div>
+						<% }	
+			%>
+						<button type="button" class="btn btn-warning m-1 btn-lg my-btn" data-toggle="modal" data-target="#myModal">
+							<i class="fas fa-shopping-cart fa-2x"></i>
+						</button>
+		</li>
+      </ul>
+    </nav>
+    <!-- .cd-primary-nav -->
+
+  </header>
+  <!-- .cd-auto-hide-header -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">維修</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          網站試營運，部分功能建構中。
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--關於我們-->
+  <div class="container">
+    <div class="row" style="justify-content:center">
+      <div class="col-md-4">
+        <div class="four-img">
+          <img src="img/芽寶寶_小.jpg">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="four-content">
+          <h3>芽寶寶有機農場</h3>
+          <hr>
+          <h4>堅強女子力，專利技術栽培的無介質活芽菜</h4>
+          <p class="about-p">看似簡單的芽菜培養工作，隱藏著重重難關，
+            <br> 劉金枝不斷嘗試各種芽菜的種植方式與銷售組合，
+            <br> 經過多年努力，屬於她的芽菜小王國已然成形。
+            <br> 芽寶寶的無塵培芽室採用恆溫、過濾、自動灑水系統，確保生產過程汙染風險降到最低，
+            <br> 有機種子經獨家專利無介質栽培技術播種，
+            <br> 出貨時的芽菜仍維持著成長中的狀態，保鮮期更長。
+            <br> 芽寶寶的11種活芽菜，全經有機驗證，纖維高、維生素多、且充滿酵素。
+            <br> 洗後直接生吃，口齒間迸發的濃郁及營養，清甜響脆，就如同芽寶寶的初衷，簡單而純粹。
+          </p>
+          <h4>CAS認證有機農場</h4>
+          <p class="about-p"><i class="fas fa-bookmark"></i> 2010/3/12-2013/3/11通過
+            <br> 有機驗證單位【暐凱國際驗證科技(股)公司】驗證，取得有機芽菜驗證證書，
+            <br> 證書字號：FSII-OA-0015。
+            <br> <i class="fas fa-bookmark"></i> 2013/3/11-2015/6/23通過
+            <br> 有機驗證單位【國立成功大學】驗證，取得的有機芽菜驗證證書，
+            <br> 證書字號：NCKU-GPCD-PR-099A-11。
+            <br> <i class="fas fa-bookmark"></i> 2015/6/24-2018/6/23通過
+            <br> 有機驗證單位【國立中興大學】驗證，取得的有機芽菜驗證證書，
+            <br> 證書字號：APACC-OG-104-198。
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="about">
+          <div class="ab-title">聯盟成員</div>
+          <div class="ab-member">
+            <a href="/about_yulin">
+              <img src="img/語林_小.jpg">
+              <p>語林有機農場</p>
+            </a>
+          </div>
+          <div class="ab-member">
+            <a href="/about_yabao">
+              <img src="img/芽寶寶_小.jpg">
+              <p>芽寶寶有機農場</p>
+            </a>
+          </div>
+          <div class="ab-member">
+            <a href="/about_chouhao">
+              <img src="img/周好_小.jpg">
+              <p>周好小農場</p>
+            </a>
+          </div>
+          <div class="ab-member">
+            <a href="/about_chiyuchi">
+              <img src="img/畦遊季_小.jpg">
+              <p style="border-right:none">畦遊季有機農場</p>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script src="js/mybootstrap.js"></script>
+
+</body>
+
+</html>
