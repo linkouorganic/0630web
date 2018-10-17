@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>林口有機聯盟</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115160215-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-115160215-1');
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <!--商品-->
+    <link rel="stylesheet" type="text/css" href="css/newpro/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/newpro/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="css/newpro/util.css">
+    <link rel="stylesheet" type="text/css" href="css/newpro/main.css">
+    <link rel="stylesheet" type="text/css" href="css/newpro/mystyle.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+      <!--導覽列-->
+  <header class="cd-auto-hide-header">
+    <div class="logo">
+      <a href="/">
+        <img src="img/透明logo1.gif" alt="Logo">
+      </a>
+    </div>
+
+    <nav class="cd-primary-nav">
+      <a href="#cd-navigation" class="nav-trigger">
+        <span>
+          <em aria-hidden="true"></em>
+          Menu
+        </span>
+      </a>
+      <!-- .nav-trigger -->
+
+      <ul id="cd-navigation">
+        <li>
+          <a href="/about">關於我們</a>
+        </li>
+        <li>
+            <a href="/mv">聯盟故事微電影</a>
+          </li>
+        <li>
+			<a href="/productListByPage?pageNo=1">我們的商品</a>
+        </li>
+        <li>
+          <a href="/distributors">去哪兒買</a>
+        </li>
+        <li>
+          <a href="/certification">認證資訊</a>
+        </li>
+        <li>
+          <a href="/contact">聯絡我們</a>
+        </li>
+        <li style="display:inline-flex">
+			<% if(login)
+			{
+				if(user.supplierid){%>
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profilesupplier'">會員專區</button>
+				<%}else {%>
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profile'">會員專區</button>
+				<% } %> 
+				
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/logout'">登出</button>
+				<% }	
+			else
+				{%>
+						<!--<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/login'">登入</button>-->
+						<!---->
+						<div class="dropdown login-dropdown" style="display:inline-flex">
+							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">登入
+								<span class="caret"></span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="/login">一般會員</a>
+								<a class="dropdown-item" href="/loginsupplier">供應商</a>
+							</div>
+						</div>
+						<!---->
+						<div class="dropdown login-dropdown" style="display:inline-flex">
+							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">註冊
+								<span class="caret"></span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="/signup">一般會員</a>
+								<a class="dropdown-item" href="/signupsupplier">供應商</a>
+							</div>
+						</div>
+						<% }	
+			%>
+						<button type="button" class="btn btn-warning m-1 btn-lg my-btn" data-toggle="modal" data-target="#myModal">
+							<i class="fas fa-shopping-cart fa-2x"></i>
+						</button>
+		</li>
+      </ul>
+    </nav>
+
+    </header>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">維修</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    網站試營運，部分功能建構中。
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--商品-->
+    <!-- Product Detail -->
+    <div class="prodetail">
+        <section class="sec-product-detail bg0 p-t-65 p-b-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 p-b-30">
+                        <div class="p-l-25 p-r-30 p-lr-0-lg">
+                            <div class="wrap-slick3 flex-sb flex-w">
+                                <div class="wrap-slick3-dots"></div>
+                                <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+                                <div class="slick3 gallery-lb">
+                                    <div class="item-slick3" data-thumb="img/產品單拍/大陸妹_小.jpg">
+                                        <div class="wrap-pic-w pos-relative">							
+                                            <img src="img/<%= data[0].Image1 %>"  " style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 p-b-30">
+                        <div class="p-r-50 p-t-5 p-lr-0-lg">
+
+                            <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                                 <%= data[0].ProName %>     
+                            </h4>
+                            <span class="mtext-106 cl2">
+                               $<%= data[0].ProPrice %>  
+                            </span>
+                            <p class="stext-102 cl3 p-t-23" style="padding-right:40px">
+                                <%= data[0].ProIntroduction %>  
+                            </p>
+
+                            <!--選項-->
+                            <div class="p-t-33">
+                               <!-- <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-203 flex-c-m respon6">
+                                        規格
+                                    </div>
+
+                                    <div class="size-204 respon6-next">
+                                        <div class="rs1-select2  bg0">
+                                            <select class="form-control js-select2" name="size">
+                                                <option>請選擇</option>
+                                                <option>小 , 50g</option>
+                                                <option>中 , 80g</option>
+                                                <option>大 , 100g</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                    </div>
+                                </div>-->
+
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-203 flex-c-m respon6">
+                                        數量
+                                    </div>
+                                    <div class="size-204 respon6-next">
+                                        
+                                        <div class="rs1-select2  bg0">
+                                            <select class="form-control js-select2" name="quantity">
+                                                <option>請選擇</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <a href="/shoppingcart"><button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                        加入購物車
+                                    </button></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bor10 m-t-50 p-t-43 p-b-40 pro_information">
+                    <!-- 產品詳細介紹 -->
+                    <div class="tab01">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item p-b-10">
+                                <a class="nav-link active" data-toggle="tab" href="#description" role="tab">產品介紹</a>
+                            </li>
+
+                            <li class="nav-item p-b-10">
+                                <a class="nav-link" data-toggle="tab" href="#information" role="tab">產品規格</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content p-t-43">
+                            <!--產品介紹-->
+                            <div class="tab-pane fade show active" id="description" role="tabpanel">
+                                <div class="how-pos2 p-lr-15-md">
+                                    <p class="stext-102 cl6">
+                                        <%= data[0].ProIntroduction %>  
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!--產品規格-->
+                            <div class="tab-pane fade" id="information" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+                                        <ul class="p-lr-28 p-lr-15-sm">
+                                            <li class="flex-w flex-t p-b-7">
+                                                <span class="stext-102 cl3 size-205">
+                                                    重量
+                                                </span>
+
+                                                <span class="stext-102 cl6 size-206">
+                                                    <%= data[0].ProWeight %>斤
+                                                </span>
+                                            </li>
+
+                                            <li class="flex-w flex-t p-b-7">
+                                                <span class="stext-102 cl3 size-205">
+                                                    上架日期
+                                                </span>
+
+                                                <span class="stext-102 cl6 size-206">
+                                                    <p class="pFromDB"><%= myDateFormat(data[0].MarketDate) %>  </p>
+                                                </span>
+                                            </li>
+
+                                            <li class="flex-w flex-t p-b-7">
+                                                <span class="stext-102 cl3 size-205">
+                                                    製造商
+                                                </span>
+
+                                                <span class="stext-102 cl6 size-206">
+                                                    林口有機聯盟
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mybootstrap.js"></script>
+    
+
+</body>
+
+</html>
