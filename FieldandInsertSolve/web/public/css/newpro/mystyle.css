@@ -1,0 +1,95 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+/**/
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+}
+.prodetail{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.pro-container{
+    padding:0 70px;
+    margin-top:80px;
+}
+.product-catalog li{
+    margin-right:10px;
+}
+.product-catalog img{
+    width:130px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.product-search{
+    position: absolute;
+    top:20%;
+    right:12%;
+}
+.product-search input{
+    height:30px;
+    width:80px;
+    margin-right: 3px;
+}
+
+.isotope-grid{
+    margin-top:10px;
+    padding:30px;
+}
+.block2-pic img{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.block2-btn {
+    left: 40%;
+}
+.block2-txt-child1 a{
+    font-size:18px;
+    text-align: center;
+}
+
+
+/*產品詳細介紹*/
+/*圖片*/
+.slick3 {
+    width: 70%;
+}
+@media (max-width: 720px) {
+    .slick3 {        
+        margin:-40px auto -10px auto;
+    }
+  }
+/*簡介_規格*/
+.js-select2{
+    width:130px;
+    height:40px;
+    font-size: 11px;
+}
+/*簡介_數量*/
+.hov-btn3:hover {
+    border-color: rgb(60, 136, 236);
+    background-color: rgb(60, 136, 236);
+    color: #fff;
+}
+
+/*產品介紹*/
+.pro_information{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+@media (max-width: 720px) {
+    .pro_information{
+        width:100%;
+        margin:0;
+    }
+  }
+.m-t-50{
+    margin-top:20px;
+}
+@media (max-width: 720px) {
+    .m-t-50{
+        margin-top:20px;
+    }
+  }
+
+

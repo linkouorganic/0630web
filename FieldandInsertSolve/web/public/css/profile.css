@@ -1,0 +1,85 @@
+body {
+    background: url('../img/背景.jpg') no-repeat fixed center center;
+    background-size: cover;
+}
+/* Style the element that is used to open and close the accordion class */
+.member-panel{
+    background-color: #eee;
+}
+p.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    font-size: 20px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-bottom:0;
+}
+/* Add a background color to the accordion if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+p.accordion.active, p.accordion:hover {
+    background-color: #ddd;
+}
+p.accordion:after {
+    content: '\2795'; /* plus sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+p.accordion.active:after {
+    content: "\2796"; /* minus sign (-) */
+}
+
+/* Style the element that is used for the panel class */
+div.panel {
+    padding:0;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    opacity: 0;
+    margin-bottom:10px;
+}
+div.panel.show {
+    padding:20px;
+    transition:0s;
+    opacity: 1;
+    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+
+/*QA*/
+.member-form {
+    padding:0 20px;
+    font-size: 16px;
+}
+.member-form .btn-default {
+    background-color: #305896;
+    color: #fff;
+}
+.member-form .form-control {
+    margin-top:5px;
+    margin-bottom: 10px;
+    border-radius: 0;
+}
+.member-form input, .member-form textarea{
+    font-size: 15px;
+    width:90%;
+}
+.member-form #form-message{
+    height: 150px;
+}
+
+/*判斷老闆或員工按鈕*/
+.sup_managebtn button{
+    position: fixed;
+    bottom:10%;
+    right:5%;
+    font-size:18px;
+    padding-top:auto;
+    padding-bottom: auto;
+    border-radius: 10px;
+}

@@ -1,0 +1,32 @@
+table.shoppingCart_table tr.shoppingCart_tablehead{
+    text-align:center;    
+    font-size: 18px; 
+    
+}
+table.shoppingCart_table td{
+    font-size: 14px;  
+    text-align:center;
+    vertical-align: middle;
+}
+table.shoppingCart_table .shoppingCart_propic{
+    font-size: 14px; 
+    display:inline;
+    margin-right:5px;
+}
+table.shoppingCart_table .shoppingCart_propic img{
+    width:50px;
+    vertical-align:middle;
+}
+table.shoppingCart_table .shoppingCart_proname{
+    font-size: 14px; 
+    display:inline;
+}
+input[type=button] {
+    padding:3px;
+    background:transparent; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
