@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>林口有機聯盟</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115160215-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-115160215-1');
+    </script>
+    <!--新增檔案-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/distributor.css">
+</head>
+
+<body>
+    <!--導覽列-->
+    <header class="cd-auto-hide-header">
+        <div class="logo">
+            <a href="/">
+                <img src="img/透明logo1.gif" alt="Logo">
+            </a>
+        </div>
+
+        <nav class="cd-primary-nav">
+            <a href="#cd-navigation" class="nav-trigger">
+                <span>
+                    <em aria-hidden="true"></em>
+                    Menu
+                </span>
+            </a>
+            <!-- .nav-trigger -->
+
+            <ul id="cd-navigation">
+                <li>
+                    <a href="/about">關於我們</a>
+                </li>
+                <li>
+                    <a href="/mv">聯盟故事微電影</a>
+                </li>
+                <li>
+                    <a href="/productListByPage?pageNo=1">我們的商品</a>
+                </li>
+                <li>
+                    <a href="/distributors">去哪兒買</a>
+                </li>
+                <li>
+                    <a href="/certification">認證資訊</a>
+                </li>
+                <li>
+                    <a href="/contact">聯絡我們</a>
+                </li>
+                
+				<li style="display:inline-flex">
+					<% if(login)
+					{
+						if(user.supplierid){%>
+						<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profilesupplier'">會員專區</button>
+						<%}else {%>
+						<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profile'">會員專區</button>
+						<% } %> 
+						
+						<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/logout'">登出</button>
+						<% }	
+					else
+						{%>
+								<!--<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/login'">登入</button>-->
+								<!---->
+								<div class="dropdown login-dropdown" style="display:inline-flex">
+									<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">登入
+										<span class="caret"></span>
+									</button>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+										<a class="dropdown-item" href="/login">一般會員</a>
+										<a class="dropdown-item" href="/loginsupplier">供應商</a>
+									</div>
+								</div>
+								<!---->
+								<div class="dropdown login-dropdown" style="display:inline-flex">
+									<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">註冊
+										<span class="caret"></span>
+									</button>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+										<a class="dropdown-item" href="/signup">一般會員</a>
+										<a class="dropdown-item" href="/signupsupplier">供應商</a>
+									</div>
+								</div>
+								<% }	
+					%>
+						<button type="button" class="btn btn-warning m-1 btn-lg my-btn" data-toggle="modal"  onclick="self.location.href='/shoppingcart'">
+							<i class="fas fa-shopping-cart fa-2x"></i>
+						</button>
+				</li>
+            </ul>
+        </nav>
+        <!-- .cd-primary-nav -->
+
+    </header>
+    <!-- .cd-auto-hide-header -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">維修</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    網站試營運，部分功能建構中。
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--實體店面-->
+    <div class="container">
+        <h3 class="tittle-w3l" style="margin-top:0">實體通路商
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <div class="region" style="margin-top:20px;margin-bottom:-15px">
+            <ul class="nav nav-tabs">
+                <li>
+                    <a data-toggle="tab" href="#distributor-taipei">台北市</a>
+                </li>
+                
+                <li>
+                    <a data-toggle="tab" href="#distributor-newtaipei">新北市</a>
+                </li>
+                
+                <li>
+                    <a data-toggle="tab" href="#distributor-taoyuan">桃園市</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="distributor-taipei">
+                <div class="outer-wrap">
+                    <div class="content">
+                        <main class="main-area">
+                            <section class="cards">
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/全聯.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>天母天玉店</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>台北市士林區天母西路3號
+                                            <br>
+                                            <i class="fas fa-clock"></i>週一至日　08:00–23:00
+                                            <br>
+                                            <i class="fas fa-phone"></i>(02)2871-0552</p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/希望廣場.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>臺北市希望廣場(Ａ區)</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>台北市中正區林森北路北平東路
+                                            <br>
+                                            <i class="fas fa-clock"></i>星期六　10:00–19:00
+                                            <br>　　星期日　10:00–18:00</p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/好農市.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>好農市有機安心食品商店</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>台北市大安區復興南路二段155號
+                                            <br>
+                                            <i class="fas fa-clock"></i>週一至六　08:00–21:30
+                                            <br> 　　星期日　　10:00–20:00
+                                            <br>
+                                            <i class="fas fa-phone"></i>(02)2784-9981</p>
+                                    </div>
+                                </article>
+
+                            </section>
+                            <!-- .cards -->
+                        </main>
+                    </div>
+                    <!-- .content -->
+                </div>
+                <!-- .outer-wrap -->
+            </div>
+            <div class="tab-pane" id="distributor-newtaipei">
+                <div class="outer-wrap">
+                    <div class="content">
+                        <main class="main-area">
+                            <section class="cards">
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/全聯.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>板橋文聖店</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>新北市板橋區文聖街73號
+                                            <br>
+                                            <i class="fas fa-clock"></i>週一至日　08:00–23:00
+                                            <br>
+                                            <i class="fas fa-phone"></i>(02)8259-5356</p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/全聯.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>板橋雨農店</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>新北市板橋區雨農路27巷2號
+                                            <br>
+                                            <i class="fas fa-clock"></i>週一至日　08:00–23:00
+                                            <br>
+                                            <i class="fas fa-phone"></i>(02)8251-0515</p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/蘆洲農會超市.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>蘆洲農會超市</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>新北市蘆洲區中山一路129號
+                                            <br>
+                                            <i class="fas fa-clock"></i>週一至五　08:30–15:30
+                                            <br>
+                                            <i class="fas fa-phone"></i>(02)8282-0777</p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/佳家樂.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>家佳樂百貨量販廣場(林口三店)</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>新北市林口區南勢街19號
+                                            <br><i class="fas fa-clock"></i>週一至日　08:30–22:30
+                                            <br><i class="fas fa-phone"></i>(02)2609-5527</p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/佳家樂.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>家佳樂五金食品百貨</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>新北市林口區文化二路二段123號
+                                            <br><i class="fas fa-clock"></i>週一至日　08:30–22:30
+                                            <br><i class="fas fa-phone"></i>(02)8601-4459</p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/臺地農夫市集.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>台地農夫市集</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>新北市林口區南勢二街154號
+                                            <br><i class="fas fa-clock"></i>雙週日　13:00-17:00
+                                            <br><i class="fas fa-phone"></i>0926-186-833</p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/林口環球購物中心.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>林口環球購物中心</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>新北市林口區文化三路一段2號
+                                            <br><i class="fas fa-clock"></i>雙週六　11:00-19:00
+                                            <br><i class="fas fa-phone"></i>(02)2606-9668</p>
+                                    </div>
+                                </article>
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/美麗樹.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>林口美麗樹</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>新北市林口區四維路10號
+                                            <br><i class="fas fa-clock"></i>週一至日　11:30–20:30
+                                            <br><i class="fas fa-phone"></i>(02)2602-3237</p>
+                                    </div>
+                                </article>
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/林口樂食天下.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>林口樂食天下</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>新北市林口區文化三路一段39巷181號
+                                            <br><i class="fas fa-clock"></i>週三至日　11:30–14:30
+                                            <br>　　　　　　　17:00–21:00
+                                            <br><i class="fas fa-phone"></i>(02)2600-8887</p>
+                                    </div>
+                                </article>
+
+                            </section>
+                            <!-- .cards -->
+                        </main>
+                    </div>
+                    <!-- .content -->
+                </div>
+            </div>
+            <div class="tab-pane" id="distributor-taoyuan">
+                <div class="outer-wrap">
+                    <div class="content">
+                        <main class="main-area">
+                            <section class="cards">
+                                <article class="card">
+                                    <picture class="thumbnail">
+                                        <img src="img/門市/葉綠素.jpg">
+                                    </picture>
+                                    <div class="card-content">
+                                        <h2>葉綠素生鮮農產</h2>
+                                        <p>
+                                            <i class="fas fa-map-marker-alt fa-lg"></i>桃園市龜山區忠義路二段520號
+                                            <br><i class="fas fa-clock"></i>週一至日　09:00–21:00
+                                            <br><i class="fas fa-phone"></i>0960-575-051</p>
+                                    </div>
+                                </article>
+
+                            </section>
+                            <!-- .cards -->
+                        </main>
+                    </div>
+                    <!-- .content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <!--新增檔案-->
+    <script src="js/main.js"></script>
+    <script src="js/mybootstrap.js"></script>
+
+</body>
+
+</html>

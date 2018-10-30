@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>林口有機聯盟</title>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115160215-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-115160215-1');
+	</script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/nav.css">
+	<link rel="stylesheet" href="css/main.css">	
+	<link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+	<!--導覽列-->
+	<header class="cd-auto-hide-header">
+		<div class="logo">
+			<a href="/">
+				<img src="img/透明logo1.gif" alt="Logo">
+			</a>
+		</div>
+
+		<nav class="cd-primary-nav">
+			<a href="#cd-navigation" class="nav-trigger">
+				<span>
+					<em aria-hidden="true"></em>
+					Menu
+				</span>
+			</a>
+			<!-- .nav-trigger -->
+
+			<ul id="cd-navigation">
+				<li>
+					<a href="/about">關於我們</a>
+				</li>
+				<li>
+					<a href="/mv">聯盟故事微電影</a>
+				</li>
+				<li>
+					<a href="/productListByPage?pageNo=1">我們的商品</a>
+				</li>
+				<li>
+					<a href="/distributors">去哪兒買</a>
+				</li>
+				<li>
+					<a href="/certification">認證資訊</a>
+				</li>
+				<li>
+					<a href="/contact">聯絡我們</a>
+				</li>
+
+				<li style="display:inline-flex">
+					<% if(login)
+					{
+						if(user.supplierid){%>
+						<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profilesupplier'">會員專區</button>
+						<%}else {%>
+						<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profile'">會員專區</button>
+						<% } %> 
+						
+						<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/logout'">登出</button>
+						<% }	
+				else
+					{%>
+							<!--<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/login'">登入</button>-->
+							<!---->
+							<div class="dropdown login-dropdown" style="display:inline-flex">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">登入
+									<span class="caret"></span>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+									<a class="dropdown-item" href="/login">一般會員</a>
+									<a class="dropdown-item" href="/loginsupplier">供應商</a>
+								</div>
+							</div>
+							<!---->
+							<div class="dropdown login-dropdown" style="display:inline-flex">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">註冊
+									<span class="caret"></span>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+									<a class="dropdown-item" href="/signup">一般會員</a>
+									<a class="dropdown-item" href="/signupsupplier">供應商</a>
+								</div>
+							</div>
+							<% }	
+				%>
+								<button type="button" class="btn btn-warning m-1 btn-lg my-btn" data-toggle="modal" onclick="self.location.href='/shoppingcart'">
+									<i class="fas fa-shopping-cart fa-2x"></i>
+								</button>
+				</li>
+			</ul>
+		</nav>
+		<!-- .cd-primary-nav -->
+
+	</header>
+	<!-- .cd-auto-hide-header -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">維修</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					網站試營運，部分功能建構中。
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--會員專區-->
+	<div class="container">
+		<div class="row member-class" style="justify-content:center">
+			<div class="col-md-8 ">
+				<div class="member-panel">
+					<p class="accordion">訂單查詢</p>
+					<div class="panel" style="overflow:auto;height:400px;">
+					<div id="accordionorder">	
+						<% for(var order=0; order<orderData.length; order++){ %>   
+						<% if(orderData[order].createid!="yulin" & orderData[order].createid!="yabao" & orderData[order].createid!="chouhao" & orderData[order].createid!="chiyuchi"){ %> 
+											  
+							<div class="card">
+							  <div class="card-header" id="heading<%=order%>">
+								<h5 class="mb-0">
+								  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse<%=order%>" aria-expanded="false" aria-controls="collapse<%=order%>">
+									訂單<%= myDateFormat(orderData[order].OrdDate) %>
+								  </button>
+								</h5>
+							  </div>
+							  <div id="collapse<%=order%>" class="collapse" aria-labelledby="heading<%=order%>" data-parent="#accordionorder">
+								<div class="card-body" style="overflow:auto;height:350px;">
+									<div class="form-group row mx-3">
+										<label class="mb-3">訂貨日期:</label>
+										<div class="col-md-3">
+										  <p class="pFromDB"><%= myDateFormat(orderData[order].OrdDate) %></p>
+										</div>
+										<table style="width:100%">	
+											<tr>
+											  <th style="border: 1px solid #868e96; font-size:17px ;padding:5px; background-color:#ddd; font-weight:bold">商品名稱</th>
+											  <th style="border: 1px solid #868e96; font-size:17px ;padding:5px; background-color:#ddd; font-weight:bold">重量</th>
+											  <th style="border: 1px solid #868e96; font-size:17px ;padding:5px; background-color:#ddd; font-weight:bold">數量</th>
+											  <th style="border: 1px solid #868e96; font-size:17px ;padding:5px; background-color:#ddd; font-weight:bold">單價</th>
+											  <th style="border: 1px solid #868e96; font-size:17px ;padding:5px; background-color:#ddd; font-weight:bold">小計</th>
+											</tr>
+											<% for(var orderdetail=0; orderdetail<orderdetailData.length; orderdetail++){ %>   
+												<% if(orderData[order].OrdNo==orderdetailData[orderdetail].Order_OrdNo){ %> 
+												<tr>
+												  <td style="border: 1px solid #868e96;padding:2px">
+													<% for(var name=0; name<productData.length; name++){ %> 
+														<% if(productData[name].ProId==orderdetailData[orderdetail].Product_ProId){ %>    
+															<p class="pFromDB"><%= (productData[name].ProName) %></p> 
+														<% } %> 
+													<% } %> 
+												  </td>
+												  <td style="border: 1px solid #868e96;padding:2px"><%= orderdetailData[orderdetail].Weight%>克</td>
+												  <td style="border: 1px solid #868e96;padding:2px"><%= orderdetailData[orderdetail].Quantity %>包</td>
+												  <td style="border: 1px solid #868e96;padding:2px">$<%= orderdetailData[orderdetail].UnitPrice%></td>
+												  <td style="border: 1px solid #868e96;padding:2px">$<%= orderdetailData[orderdetail].UnitPrice*orderdetailData[orderdetail].Quantity %></td>
+												  
+												  
+												 <% } %>	
+												<% } %>	
+												  
+												</tr>
+												 
+										</table>
+										<div class="form-group">
+											<% for(var custom=0; custom<customData.length; custom++){ %>    
+											<% if(orderData[order].Custom_CusNo==customData[custom].id){ %> 
+								
+											<div class="form-group row ml-1 my-4">
+											  <p>顧客姓名:<%= (customData[custom].CusName) %></p>
+											</div>
+
+											<div class="form-group row ml-1 my-4">
+											  <p>顧客地址:<%= (customData[custom].Address) %></p>
+											</div>
+
+											<div class="form-group row ml-1 my-4">
+											  <p>顧客電話:<%= (customData[custom].Cellphone) %></p>
+											</div>
+												<% } %> 
+											<% } %> 
+											
+										</div>
+										
+											
+											 
+												<div style="width:100%">	
+												
+												<tr>
+												  
+												  <form role="form" action="/orderstatus" method="post" >	
+													<div class="form-group row ml-1">
+													<td style="border: 1px solid #868e96;padding:2px">訂貨狀況:</td>
+													<% for(var pendingstatus=0; pendingstatus<orddetailstatusData.length; pendingstatus++){ %>    
+														<% if(orderData[order].OrdNo==orddetailstatusData[pendingstatus].Order_OrdNo){ %>
+														<div id="shipmentbtn<%= orderData[order].OrdNo %>"><input type="hidden"  value="<%= orddetailstatusData[pendingstatus].OrdStatus.substring(0,3) %>" name='shipment'></div>
+															<input type="button" class="btn btn-default mx-3" value="<%= orddetailstatusData[pendingstatus].OrdStatus.substring(0,3) %>" name="shipment" id="shipment<%= orderData[order].OrdNo %>">
+	
+														<div id="paymentbtn<%= orderData[order].OrdNo %>"><input type="hidden"  value="<%= orddetailstatusData[pendingstatus].OrdStatus.substring(3) %>" name='payment'></div>
+															<input type="button" class="btn btn-default"  value="<%= orddetailstatusData[pendingstatus].OrdStatus.substring(3) %>" name="payment" id="payment<%= orderData[order].OrdNo %>">
+
+														<% } %> 
+													<% } %> 
+													
+												 
+													<% if(user.userid=="yulin" | user.userid=="yabao" | user.userid=="chouhao" | user.userid=="chiyuchi"){ %> 
+														<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+														<button type="submit" class="btn btn-primary btn-xs mx-3" data-dismiss="modal">確認</button>
+													<% } %> 
+													</div>
+												  <input type="hidden" class="form-control" value="<%= orderData[order].OrdNo %>" name="orddetailNo" id="orddetailNo">
+												  </form>
+												</tr>
+												 
+												</div>
+											
+												
+												
+												<script>
+													 document.getElementById("shipment<%= orderData[order].OrdNo %>").addEventListener(
+													  "click",
+													  function(event) {
+														if (event.target.value === "未出貨") {
+														  event.target.value = "已出貨";
+														  document.getElementById("shipmentbtn<%= orderData[order].OrdNo %>").innerHTML = "<input type='hidden' class='form-control' value='已出貨' name='shipment' id='shipment'>";
+														} else {
+														  event.target.value = "未出貨";
+														  document.getElementById("shipmentbtn<%= orderData[order].OrdNo %>").innerHTML = "<input type='hidden' class='form-control' value='未出貨' name='shipment' id='shipment'>";
+														}
+													  },
+													  false
+													);
+												</script>
+												
+												<script>
+													 document.getElementById("payment<%= orderData[order].OrdNo %>").addEventListener(
+													  "click",
+													  function(event) {
+														if (event.target.value === "未付款") {
+														  event.target.value = "已付款";
+														  document.getElementById("paymentbtn<%= orderData[order].OrdNo %>").innerHTML = "<input type='hidden' class='form-control' value='已付款' name='payment' id='payment'>";
+														} else {
+														  event.target.value = "未付款";
+														  document.getElementById("paymentbtn<%= orderData[order].OrdNo %>").innerHTML = "<input type='hidden' class='form-control' value='未付款' name='payment' id='payment'>";
+														}
+													  },
+													  false
+													);
+												</script>
+												
+											
+										
+									</div>
+									
+								</div>
+							  </div>
+							</div>
+						
+						<% } %>	
+						<% } %>	
+						  </div>
+					</div>
+				</div>
+
+
+				<div class="member-panel">
+					<p class="accordion">修改個人資料</p>
+					<div class="panel">
+						
+						
+						<!--**********************************************-->				
+						<form  onsubmit="return confirm('是否確定更改?');" role="form" method="post" action="/updatesupplier">	
+							<% if (hasErrors) {%>
+							 <div class="alert alert-danger">
+								 <% messages.forEach(function(message){ %>
+								   <p><%= message %></p>
+								 <% });%>
+							 </div>
+							<% }%>
+
+							<input type="hidden" class="form-control" name="id" value="<%= user.id %>" readonly/>
+							                
+							<div class="form-group">                     
+								<label>姓名</label>
+								<input type="text" class="form-control" name="username" value="<%= user.username %>"/>
+							</div>
+							
+							<div class="form-group">                     
+								<label>帳號</label>
+								<input type="text" class="form-control" name="userid" value="<%= user.userid %>" readonly/>
+							</div>
+
+							<div class="form-group">                     
+								<label>密碼</label>
+								<input type="password" class="form-control" name="userpassword" />
+							</div>          
+							<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+							<button type="submit" class="btn btn-primary btn-lg">更改</button>
+						</form>    
+						<!--********************************************-->
+						
+					</div>
+				</div>
+				<!--判斷老闆或員工-->
+				<div class="sup_managebtn">
+					<%if(user.authority == "admin"){%>
+						<button type="button" class="btn btn-warning btn-lg m-1" onclick="self.location.href='/supplier'">廠商電話下單管理
+							<i class="fas fa-arrow-alt-circle-right fa-1x"></i>
+						</button>
+					<%}else {%>
+						<button type="button" class="btn btn-warning btn-lg m-1" onclick="self.location.href='/supplieruser'">小農訂單管理
+							<i class="fas fa-arrow-alt-circle-right fa-1x"></i>
+						</button>
+					<% } %> 
+				</div>
+				<!--判斷老闆或員工-->
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	 crossorigin="anonymous"></script>
+	<script src="js/main.js"></script>
+	<script src="js/mybootstrap.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>林口有機聯盟</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115160215-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-115160215-1');
+  </script>
+  <!--新增檔案-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/supplier.css">
+  
+</head>
+
+<body>
+  <!--導覽列-->
+  <header class="cd-auto-hide-header">
+    <div class="logo">
+      <a href="/">
+        <img src="img/透明logo1.gif" alt="Logo">
+      </a>
+    </div>
+
+    <nav class="cd-primary-nav">
+      <a href="#cd-navigation" class="nav-trigger">
+        <span>
+          <em aria-hidden="true"></em>
+          Menu
+        </span>
+      </a>
+      <!-- .nav-trigger -->
+
+      <ul id="cd-navigation">
+        <li>
+          <a href="/about">關於我們</a>
+        </li>
+        <li>
+          <a href="/mv">聯盟故事微電影</a>
+        </li>
+        <li>
+          <a href="/productListByPage?pageNo=1">我們的商品</a>
+        </li>
+        <li>
+          <a href="/distributors">去哪兒買</a>
+        </li>
+        <li>
+          <a href="/certification">認證資訊</a>
+        </li>
+        <li>
+          <a href="/contact">聯絡我們</a>
+        </li>
+        <li style="display:inline-flex">
+			<% if(login)
+			{
+				if(user.supplierid){%>
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profilesupplier'">會員專區</button>
+				<%}else {%>
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/profile'">會員專區</button>
+				<% } %> 
+				
+				<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/logout'">登出</button>
+				<% }	
+			else
+				{%>
+						<!--<button type="button" class="btn btn-outline-secondary btn-lg m-1" onclick="self.location.href='/login'">登入</button>-->
+						<!---->
+						<div class="dropdown login-dropdown" style="display:inline-flex">
+							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">登入
+								<span class="caret"></span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="/login">一般會員</a>
+								<a class="dropdown-item" href="/loginsupplier">供應商</a>
+							</div>
+						</div>
+						<!---->
+						<div class="dropdown login-dropdown" style="display:inline-flex">
+							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">註冊
+								<span class="caret"></span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="/signup">一般會員</a>
+								<a class="dropdown-item" href="/signupsupplier">供應商</a>
+							</div>
+						</div>
+						<% }	
+			%>
+						<button type="button" class="btn btn-warning m-1 btn-lg my-btn" data-toggle="modal" onclick="self.location.href='/shoppingcart'">
+							<i class="fas fa-shopping-cart fa-2x"></i>
+						</button>
+		</li>
+      </ul>
+    </nav>
+    <!-- .cd-primary-nav -->
+
+  </header>
+  <!-- .cd-auto-hide-header -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">維修</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          網站試營運，部分功能建構中。
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--管理者介面-->
+  <div class="container">
+    <div class="row" style="justify-content:center;">
+      <!--管理專區分類-->
+      <div class="col-sm-12 col-md-3">
+        <div class="card supplier-catalog">
+          <div class="card-header sup-cata-title">負責人專區</div>
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link" href="/supplier" >
+              <i class="fas fa-list-alt"></i>訂單清單</a>
+			<a class="nav-link" href="/supplierordedit" >
+              <i class="fas fa-edit"></i>編輯訂單列表</a>
+            <a class="nav-link active"  href="/supplierpend" >
+              <i class="fas fa-users"></i>分配訂單</a>
+			<a class="nav-link"  href="/supplierpendedit" >
+              <i class="fas fa-user-edit"></i>編輯分配訂單</a>
+            <a class="nav-link"  href="/supplierstatus" >
+              <i class="fas fa-truck"></i>訂單狀況</a>
+          </div>
+        </div>
+      </div>
+
+      <!--內容-->
+      <div class="col-sm-12 col-md-8">
+        <div class="card">
+          <div class="tab-content" id="myTabContent">
+            
+ 
+            <!--分配訂單-->
+			
+            <div class="tab-pane fade show active" id="newOrder" role="tabpanel" aria-labelledby="newOrder-tab">
+			<h3 class="sup-title">待分配訂單</h3>
+			<div class="member-panel">
+			<% for(var pendingorder=0; pendingorder<yetpendordData.length; pendingorder++){ %>   
+				<% for(var masterorder=0; masterorder<orderData.length; masterorder++){ %>   
+					<% if(orderData[masterorder].OrdNo==yetpendordData[pendingorder].Order_OrdNo){ %>
+						<% if(orderData[masterorder].createid==user.userid){ %>
+						<% for(var custom=0; custom<customData.length; custom++){ %>    
+							<% if(orderData[masterorder].Custom_CusNo==customData[custom].id){ %>   
+							<form role="form" action="/supplierPendPro" method="post" >
+
+								<!--訂單編號-->
+								<input type="hidden" class="form-control" name="OrderDetail_Order_OrdNo" id="OrderDetail_Order_OrdNo" value="<%= yetpendordData[pendingorder].Order_OrdNo %>" >
+								<p class="accordion" onclick="self.location.href='/supplierpend'">訂單<%= yetpendordData[pendingorder].Order_OrdNo %>-<%= customData[custom].CusName %></p>		
+								<div class="panel">
+								  <div class="sup-distriOrder" style="padding-left:0">
+									<!--待分配訂單表單-->
+									<form class="sup-distriOrder-form" method="post">
+									  <div class="form-group row">
+										<label for="inputFinishDate" style="padding-left:10px">出貨日期:</label>
+										<div class="col-md-3">
+										  <p class="pFromDB"><%= myDateFormat(orderData[masterorder].FinishDate) %></p>
+										</div>
+									  </div>
+
+									  <!---->
+									  <!--分配按鈕-->
+									  <% for(var pendingpro=0; pendingpro<orderdetailData.length; pendingpro++){ %>       
+										<% if(orderData[masterorder].OrdNo==orderdetailData[pendingpro].Order_OrdNo){ %>
+											<a id="pendadd" href="javascript:" onclick="addPending<%= pendingpro %>()">
+											<button type="button" class="btn btn-outline-primary btn-lg" data-toggle="modal" data-target="#<%= pendingpro %>">
+											<!--商品序號-->
+												<input type="hidden" class="form-control" name="OrderSerNo" id="OrderSerNo" value="<%= orderdetailData[pendingpro].SerNo %>" >
+												<% for(var pendingname=0; pendingname<productData.length; pendingname++){ %>
+													<% if(productData[pendingname].ProId==orderdetailData[pendingpro].Product_ProId){ %>    
+														<%= (productData[pendingname].ProName) %>
+													
+											</button>
+											</a>
+										
+									  <!--分配modal-->
+									  <div class="modal fade" id="<%= pendingpro %>" tabindex="-1" role="dialog" aria-labelledby="DistribtnLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+										  <div class="modal-content">
+											<div class="modal-header">
+											  <h5 class="modal-title" id="DistribtnLabel">
+												<%= (productData[pendingname].ProName) %>共<%= orderdetailData[pendingpro].Quantity*orderdetailData[pendingpro].Weight %>克
+											  </h5>
+											  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											  </button>
+											</div>
+											<div class="modal-body">
+											  <!---->
+											  
+											  <div class="form-group row sup-distri-form">
+												<!--<label for="inputProName" style="margin-left:-2px;margin-bottom:5px;">供應廠商</label>-->
+												<select class="selectSupName" style="display:none" id="SupID" >
+													<% for(var sup=0; sup<supplierData.length; sup++){ %>                     
+														<option value="<%= supplierData[sup].SupID %>"><%= (supplierData[sup].SupName) %></option>                                
+													<% } %>                                                         
+												</select>
+												<!--<label for="inputNum">量</label>
+												<input type="text" class="form-control" name="inputNum" id="inputNum">
+												<p>
+												  <span id="addDistri" style="margin-left:20px;">新增</span>
+												</p>-->
+												
+												
+										
+												<!--分配量-->
+												<form role="form" action="/supplierPendPro" method="post" >
+												<table border="0" width="540" id="pen<%= pendingpro %>"> 
+													<tr> 							
+														<td width="86" bgcolor="#fff">供應農場</font></td> 
+														<td width="50" bgcolor="#fff">量</font></td> 	
+													</tr> 
+													 
+												</table> 
+												<a id="pendadd" href="javascript:" onclick="addPending<%= pendingpro %>()">
+													<button type="button" class="btn btn-success btn-xs" >
+														新增
+													</button>
+												</a> 
+
+
+												<script>  
+												var countMin = 1;  
+												var countMax = 1000000000000000000; //最多幾列 
+												var count = countMin;  
+												function addPending<%= pendingpro %>() {  
+													var table = document.getElementById("pen<%= pendingpro %>"); 
+													var tr = table.insertRow(-1); 
+
+													var select = document.createElement("select");  
+													select.setAttribute("SupID" ,"SupName" ); 
+													select.options.add(new Option("請選擇","")) 							
+													
+													for (var ap=0;ap<document.getElementById("SupID").length;ap++)  
+													select.options.add(new Option(document.getElementById("SupID").options[ap].innerHTML,document.getElementById("SupID").options[ap].value)); 
+													 
+													var td = tr.insertCell(-1);   	
+													td.appendChild(select).name="SupID";
+																		 
+													var td = tr.insertCell(-1);   
+													td.innerHTML = "<input type='text' class='form-control' name='inputProquantity' id='inputProquantity' "+tr.rowIndex+"' value='' required/>"; 					 						
+													
+													var td = tr.insertCell(-1);   
+													td.innerHTML = "<input type='hidden' class='form-control' name='difbutton' id='difbutton' "+tr.rowIndex+"' value='<%= orderdetailData[pendingpro].SerNo %>' required/>"; 					 						
+
+													var td = tr.insertCell(-1);   
+													td.innerHTML = "<input type='hidden' class='form-control' name='notAllowedit' id='notAllowedit' "+tr.rowIndex+"' value='0' required/>"; 					 						
+																				
+													var td = tr.insertCell(-1); 
+													td.innerHTML =  "<input type='hidden'  class='form-control' name='SupplierSerNo' id='SupplierSerNo' value='"+tr.rowIndex+"'>"; 
+													
+													var td = tr.insertCell(-1); 
+													td.innerHTML = "<button type='delete' class='btn btn-danger btn-xs' value='刪除' onclick='javascript:delPending<%= pendingpro %>(this);'>刪除</button>";  
+													document.getElementById("pendadd").style.display = table.rows.length == countMax+1 ? "none" : ""; 
+												}  
+												 
+												function delPending<%= pendingpro %>(obj) {  
+													var table = document.getElementById("pen<%= pendingpro %>");  
+													table.deleteRow(obj.parentNode.parentNode.rowIndex); 
+													document.getElementById("pendadd").style.display = "";  
+													
+													if (table.rows.length > countMin) {
+														 var fs = document.getElementById("fieldSpace");
+														 fs.removeChild(fs.lastChild);
+														 table.rows.length--;
+													 }else{
+														 alert("欄位數已達下限，請點選''新增''按鈕！");
+													 }
+							 
+												}  
+												</script> 
+												
+												<!--分配量-->
+												
+											  </div>
+											  <!---->
+
+											</div>
+											<div class="modal-footer">
+											  <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">確認</button>
+											</div>
+										  </div>
+										</div>
+									  </div>
+														<% } %>     
+													<% } %>     
+												<% } %>
+											<% } %> 
+										
+									  <!---->
+									  <div>
+							
+										<button type="submit" class="btn btn-primary btn-lg" style="float:right" onclick="self.location.href='/supplierpend'">提交</button>
+									  </div>
+									  </form>  
+									</form>
+
+								  </div>
+								</div>
+							  
+							  
+							</form>
+								<% } %> 
+							<% } %> 
+						<% } %> 
+					<% } %> 
+				<% } %> 
+			<% } %>
+			</div>
+			
+			
+		
+              <h3 class="sup-title" style="margin-top:20px;">已分配訂單</h3>
+
+              <div class="member-panel">
+			  
+				
+			    <% for(var okpendord=0; okpendord<okpendordData.length; okpendord++){ %> 
+					<% for(var masterorder=0; masterorder<orderData.length; masterorder++){ %>   
+					<% if(orderData[masterorder].OrdNo==okpendordData[okpendord].Order_OrdNo){ %>
+					<% for(var custom=0; custom<customData.length; custom++){ %>    
+					<% if(orderData[masterorder].Custom_CusNo==customData[custom].id){ %>   				
+				<form role="form" action="/supplierOkPendPro" method="post" >	
+					<p class="accordion">訂單<%= okpendordData[okpendord].Order_OrdNo %>-<%= customData[custom].CusName %></p>
+					
+					<div class="panel" style="overflow:auto;overflow-X:hidden;height:200px;">
+					  <div class="sup-finDistriOrder">
+						<ul>
+						  <li class="thead">
+							<ol class="tr">
+							  <li style="width:100px">產品名稱</li>
+							  <li>重量</li>
+							  <li>供應商</li>
+							  
+							</ol>
+						  </li>
+						  
+						  <% for(var okpenddetail=0; okpenddetail<suporddetailData.length; okpenddetail++){ %>  
+							<% if(okpendordData[okpendord].Order_OrdNo==suporddetailData[okpenddetail].OrderDetail_Order_OrdNo){ %> 
+
+						  <li class="tbody">
+							<ol class="tr">
+							  <li data-title="產品名稱">
+								
+								<% for(var okpro=0; okpro<orderdetailData.length; okpro++){ %>  
+									<% if(orderdetailData[okpro].Order_OrdNo==okpendordData[okpendord].Order_OrdNo){ %> 
+										<% if(orderdetailData[okpro].SerNo==suporddetailData[okpenddetail].OrderSerNo){ %> 
+											<% for(var okproname=0; okproname<productData.length; okproname++){ %>
+												<% if(productData[okproname].ProId==orderdetailData[okpro].Product_ProId){ %>    
+													<%= (productData[okproname].ProName) %>
+												<% } %> 
+											<% } %>
+										<% } %> 
+									<% } %> 
+								<% } %>
+							
+							  </li>
+							  <li data-title="重量"><%= suporddetailData[okpenddetail].ProQuantity %>克</li>
+							  <li data-title="供應商">
+								<% for(var oksup=0; oksup<supplierData.length; oksup++){ %>  
+									<% if(supplierData[oksup].SupID==suporddetailData[okpenddetail].Supplier_SupID){ %> 
+										<%= supplierData[oksup].SupName %>
+									<% } %> 
+								<% } %>
+							  </li>
+							<li style="display:none">
+								<input type="hidden" class="form-control" name="Ok_Order_OrdNo" id="Ok_Order_OrdNo" value="<%= okpendordData[okpendord].Order_OrdNo %>">
+							</li>
+							<li style="display:none">
+							<input type="hidden" class="form-control" name="Allowedit" id="Allowedit" value=1>
+							</li>
+				
+							</ol>
+								<% } %> 
+							<% } %> 
+								
+						  </li>
+						</ul>
+						<div style="text-align:right;font-weight:bold">
+							<label>製表人:
+							<%= orderData[masterorder].createid %></label>
+						</div>
+						
+						<% for(var order=0; order<orderData.length; order++){ %>   
+						<% if(okpendordData[okpendord].Order_OrdNo==orderData[order].OrdNo){ %> 
+						<% if(orderData[order].createid==user.userid){ %> 
+						<% for(var editorder=0; editorder<editpendordData.length; editorder++){ %>   
+
+						<% if(okpendordData[okpendord].Order_OrdNo==editpendordData[editorder].OrderDetail_Order_OrdNo){ %> 
+						
+							<button type="submit" class="btn btn-primary btn-lg">確認</button>
+					
+					
+						<% } %>
+						<% } %>
+						<% } %>
+						<% } %>
+						<% } %>
+						
+						
+						
+					  </div>
+					  
+					</div>
+					
+				</form>	
+				<% } %>
+						<% } %>
+						<% } %>
+						<% } %>
+				<% } %>
+				 
+			    
+              </div>
+			  <div class="row">
+                <div class="col-md-12">
+                    <ul class="pagination">
+                        <li>
+                            <a>第<%=pageNo%>頁</a>
+                        </li>                   
+
+                        <% if(startPage>1){ %>
+                            <li>
+                                <a href="/supplierpend?pageNo=<%=(startPage-1)%>">上一區段...</a>
+                            </li>
+                        <% } %> 
+
+                        <% for(var i=startPage; i<startPage+linePerPage; i++) {%>
+                            <% if(i<=totalPage){ %>
+                                <li>
+                                    <a href="/supplierpend?pageNo=<%=i%>"><%=i%></a>
+                                </li>
+                            <% } %> 
+                        <% } %>
+
+                        <% if(startPage+linePerPage<totalPage){ %>
+                            <li>
+                                <a href="/supplierpend?pageNo=<%=(startPage+linePerPage)%>">...下一區段</a>
+                            </li>
+                        <% } %>                         
+                    </ul>
+				
+                    
+                </div>  
+				</div>  
+		
+            </div>
+			
+			
+           
+			
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+  <!---->
+  <script src="https://cdn.rawgit.com/skipser/youtube-autoresize/master/youtube-autoresizer.js"></script>
+  <!--新增input按鈕-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+  <script src="js/main.js"></script>
+  <script src="js/mybootstrap.js"></script>
+
+</body>
+
+</html>
